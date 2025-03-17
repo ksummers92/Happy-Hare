@@ -33,7 +33,7 @@ Universal Automated Filament Changer / MMU driver for Klipper
 -->
 </p>
 
-Happy Hare is the original open-source filament changer controller for multi-color printing. Its philosophy is to provide a universal control system that adapts to your choice of MMU (Multi-Material Unit). If you switch MMUs, the software transitions seamlessly with you. Currently, it fully supports **ERCF**, **Tradrack**, **Box Turtle**, **Angry Beaver**, **Night Owl**, **3MS**, **3D Chameleon**, and various custom designs.
+Happy Hare is the original open-source filament changer controller for multi-color printing. Its philosophy is to provide a universal control system that adapts to your choice of MMU (Multi-Material Unit). If you switch MMUs, the software transitions seamlessly with you. Currently, it fully supports **ERCF**, **Tradrack**, **Box Turtle**, **Angry Beaver**, **Night Owl**, **3MS**, **3D Chameleon**, **QuattroBox**, **PicoMMU**, and various custom designs.
 
 The system is implemented as a Klipper extension (primarily using Python modules) to control MMUs and AFCs. It also provides functionality that can be customized through Klipper macros. With extensive configuration options for personalization, it includes an installer to simplify the initial setup for popular MMU and MCU types. For details about the different conceptual types of MMUs and the functions of their various sensors, refer to the [conceptual MMU guide](https://github.com/moggieuk/Happy-Hare/wiki/Conceptual-MMU). This guide is particularly useful for customized setups. For the best experience, pair it with the [KlipperScreen for Happy Hare](https://github.com/moggieuk/KlipperScreen-Happy-Hare-Edition) project, at least until Mainsail integration is completed. Extensive documentation is available in the [Wiki](https://github.com/moggieuk/Happy-Hare/wiki).
 
@@ -63,10 +63,13 @@ Some users have inquired about making donations to support this project (and to 
   - Night Owl
   - 3MS
   - 3D Chameleon
+  - Quattro Box
+  - PicoMMU
   - Custom...
 - Synchronized movement of extruder and gear motors (with sync feedback control) to overcome friction and even work with FLEX materials!
 - Support for all type of sensor: pre-gate, post-gear, combiner gate sensors, extruder entry sensors, toolhead sensors
 - Full Spoolman integration
+- Multiple MMUs managed as one
 - Support for motorized filament buffer systems for rewinding
 - Suite of startup macros that include sophisticated parking options for filament change or error operations
 - Implements a Tool-to-Gate mapping so that the physical spool can be mapped to any tool
@@ -78,18 +81,18 @@ Some users have inquired about making donations to support this project (and to 
 - Moonraker update-manager support
 - Moonraker gcode pre-parsing to extract important print information
 - Complete persistence of state and statistics across restarts
-- Highly configurable speed control
 - Optional integrated encoder driver that validates filament movement, runout, clog detection and flow rate verification!
 - Vast customization options most of which can be changed and tested at runtime
 - Integrated help, testing and soak-testing procedures
 - Gcode pre-processor check that all the required tools are avaialble!
 - Drives LEDs for functional feed and some bling!
 - Built in tip forming and filament cutter support (both toolhead and at MMU)
+- Klipperscreen and Mainsail/Fluidd UI
 - Lots more... Detail change log can be found in the [Wiki](https://github.com/moggieuk/Happy-Hare/wiki/Change-Log)
 
-Controlling my oldest ERCF MMU with companion [customized KlipperScreen](https://github.com/moggieuk/Happy-Hare/wiki/Basic-Operation#---klipperscreen-happy-hare) for easy touchscreen MMU control!
+Controlling my oldest ERCF MMU with companion [customized KlipperScreen](https://github.com/moggieuk/Happy-Hare/wiki/Basic-Operation#---klipperscreen-happy-hare) for easy touchscreen MMU control and new Mainsail/Fluidd integration!
 
-<p align="center"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/my_klipperscreen.png" width="600" alt="KlipperScreen-Happy Hare edition"></p>
+<p align="center"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/my_klipperscreen.png" width="60%" alt="KlipperScreen-Happy Hare edition"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/mainsail_mmu_panel.png" width="35%" alt="Mailsail/Fluidd support"></p>
 
 <br>
  
@@ -115,18 +118,14 @@ MMU's are complexd! Fortunately Happy Hare has elaborate documentation logically
 
 **Other Resources:**
 <div align="left">
-<a href="https://www.youtube.com/watch?v=uaPLuWJBdQU"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/youtube1.png" width="30%"></a>
-German instructional video created by Crydteam
-<!--
-    <img src="https://i9.ytimg.com/vi_webp/uaPLuWJBdQU/maxresdefault.webp?v=6522d1a6&sqp=CKycn6kG&rs=AOn4CLBCiHQsjGJ0c8ywvkxy9uWEk_yUXw" 
-         alt="Everything Is AWESOME" 
-         style="width:50%;">
--->
+<a href="https://www.youtube.com/watch?v=S4SVm6W368A"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/youtube0.png" width="30%"></a>
+Great (english) overview including Mainsail UI support
 
-<p><br>
+<br><a href="https://www.youtube.com/watch?v=uaPLuWJBdQU"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/youtube1.png" width="30%"></a>
+Instructional video (german) created by Crydteam
 
-<a href="https://www.youtube.com/watch?v=FCl5NfQnulg"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/youtube2.png" width="30%"></a>
-English Happy Hare introduction by Silverback
+<br><a href="https://www.youtube.com/watch?v=FCl5NfQnulg"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/youtube2.png" width="30%"></a>
+Happy Hare introduction (introduction) by Silverback
 </div>
 
 </td>
@@ -140,6 +139,7 @@ English Happy Hare introduction by Silverback
 Although the journey to calibrating and setup can be a frustrating one, I wanted to share @igiannakas (ERCFv2 + Orca Slicer + Happy Hare) example prints here.  Click on the image to zoom it. Incredible! :cool: :clap:
 
 <p align="center"><a href="https://github.com/moggieuk/Happy-Hare/wiki/resources/example_mmu_print.png"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/example_mmu_print.png" width="800" alt="Example Prints"></a></p>
+<p align="center"><a href="https://github.com/moggieuk/Happy-Hare/wiki/resources/example_mmu_print2.png"><img src="https://github.com/moggieuk/Happy-Hare/wiki/resources/example_mmu_print2.png" width="800" alt="Example Prints"></a></p>
 <br>
 
 ## ![#f03c15](https://github.com/moggieuk/Happy-Hare/wiki/resources/f03c15.png) ![#c5f015](https://github.com/moggieuk/Happy-Hare/wiki/resources/c5f015.png) ![#1589F0](https://github.com/moggieuk/Happy-Hare/wiki/resources/1589F0.png) My Testing and Setup:
